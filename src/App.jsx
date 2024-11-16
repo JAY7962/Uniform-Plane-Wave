@@ -308,7 +308,7 @@ const App = () => {
 
   return (
     <div className="three-container">
-      <div className="title">Uniform Plane Wave</div>
+      <div className="title">Field Components In Uniform Plane Wave</div>
       <div ref={mountRef} className="three-container" />
       
       <div className="controls">
@@ -407,13 +407,13 @@ const App = () => {
           <div>H Field: ({cosineWaveDirection.x}, {cosineWaveDirection.y}, {cosineWaveDirection.z})</div>
         </div>
         <div>
-          <strong>|E| (V/m) =<span style={{marginLeft:'10px'}}>{amplitude.toFixed(2)} </span></strong> 
+          <strong style={{width:"100%"}}>|E| (V/m) = {amplitude.toFixed(2)}</strong> 
         </div>
         <div>
-          <strong>|H| (A/m) = <span style={{display:"inline-block",marginLeft:'7px', width:"20px"}}>{(amplitude / k1).toFixed(8)}</span></strong> 
+          <strong style={{width:"100%"}}>|H| (A/m) = {(amplitude / k1).toFixed(8)}</strong> 
         </div> 
         <div>
-          <strong>η<sub>0</sub> = <span style={{marginLeft:'10px'}}>{k1.toFixed(4)}</span></strong> 
+          <strong style={{width:"100%"}}>η<sub>0</sub> = {k1.toFixed(4)}</strong> 
         </div>
       </div>
 
@@ -426,7 +426,16 @@ const App = () => {
           </div>
         </div>
       )}
+      <div style={{position:"absolute", bottom:"0", color:"white",margin:"0 0 10px 10px", padding:"0 10px", borderRadius:"10px", border:"1px solid white"}}>
+        <p>Affiliation: IIT Bhubaneswar</p>
+        <ul style={{display:"flex",marginLeft:"-20px", flexDirection:"column", gap:2}}>
+        <li>Rohan Rudra</li>
+        <li>Jay Roshan</li>
+        <li>Yeddula Varshitha</li>
+        </ul>
+      </div>
     </div>
+
   );
 };
 
