@@ -1,10 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { FiAlignJustify } from "react-icons/fi";
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import './App.css'
 
 const App = () => {
-  const mountRef = useRef(null);
+  const [showBox, setShowBox] = useState(false);
+  const mountRef = useRef();
   const [direction, setDirection] = useState({ x: 1, y: 0, z: 0 });
   const [unitVector, setUnitVector] = useState({ x: 1, y: 0, z: 0 });
   const [amplitude, setAmplitude] = useState(0);
@@ -28,9 +30,12 @@ const App = () => {
       sineWaveDirection.z ** 2
     );
     setAmplitude(newAmplitude);
+
+    
   }, [sineWaveDirection]);
 
   useEffect(() => {
+    console.log(window.innerWidth);
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer();
@@ -122,7 +127,9 @@ const App = () => {
 
     const animate = () => {
       requestAnimationFrame(animate);
-
+      if(window.innerWidth > 1200){
+        setShowBox(true);
+      }
       const k = 120 * Math.PI * Math.sqrt(muR / epsilonR);
       setHAmplitude(amplitude / k);
 
@@ -310,8 +317,10 @@ const App = () => {
     <div className="three-container">
       <div className="title">Field Components In Uniform Plane Wave</div>
       <div ref={mountRef} className="three-container" />
+      <FiAlignJustify  className="show-dialog" onClick={()=>setShowBox(!showBox)}/>
       
-      <div className="controls">
+      {showBox && <div className="controls">
+        <div className="margin">
         <label>
           <span>Direction X:</span>
           <input 
@@ -351,6 +360,8 @@ const App = () => {
             }}
           />
         </label>
+        </div>
+        <div>
         <label>
           <span>&epsilon;<sub>r</sub> :</span>
           <input 
@@ -389,7 +400,8 @@ const App = () => {
         <button className="submit-button" onClick={handleSubmit}>
           Submit Changes
         </button>
-      </div>
+        </div>
+      </div>}
 
       <div className="info-box">
         <div className="unit-vector">

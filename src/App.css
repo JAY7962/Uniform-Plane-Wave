@@ -6,7 +6,18 @@
 body{
   margin:0;
   padding:0;
-  overflow:hidden;
+  /* overflow:hidden; */
+}
+
+.show-dialog{
+  position: absolute;
+  top:0;
+  right:0;
+  font-size:20px;
+
+  color:white;
+  margin:2px;
+
 }
 
 .controls {
@@ -22,6 +33,8 @@ body{
   font-family: 'Arial', sans-serif;
   border: 1px solid #e9ecef;
 }
+
+
 
 .info-box {
   position: absolute;
@@ -164,4 +177,32 @@ input[type="text"]:focus {
 
 .error-content button:hover {
   background: #0056b3;
+}
+
+
+
+@media(min-width:1200px){
+  .controls{
+    width:160px;
+  }
+  .show-dialog{
+    display:none;
+  }
+}
+
+@media(max-width:1050px){
+  .controls{
+    display:flex;
+    justify-content: center;
+    width:380px;
+  }
+  .margin{
+    margin-right:10px;
+  }
+}
+
+@media(min-width:1600px){
+  .controls{
+    width:270px;
+  }
 }
